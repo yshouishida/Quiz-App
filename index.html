@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identification Quiz System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Identification Quiz App</h1>
+        
+        <button onclick="showCreateQuiz()">Create New Quiz</button>
+        <button onclick="showQuizzes()">View Quizzes</button>
+
+        <div id="createQuiz" class="quiz-form">
+            <h2>Create New Quiz</h2>
+            <div class="form-group">
+                <label for="quizTitle">Quiz Title:</label>
+                <input type="text" id="quizTitle" required placeholder="Enter quiz title">
+            </div>
+            
+            <div id="questions"></div>
+            
+            <button onclick="addQuestion()">Add Question</button>
+            <button onclick="saveQuiz()">Save Quiz</button>
+        </div>
+
+        <div id="quizList" class="quiz-list"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
