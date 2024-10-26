@@ -110,7 +110,7 @@ textarea:focus {
     box-shadow: 0 0 10px rgba(194, 184, 163, 0.2);
 }
 
-button {
+button, #fileInput {
     background-color: var(--primary-bg);
     color: var(--primary-text);
     padding: 12px 24px;
