@@ -109,7 +109,7 @@ function startQuiz(id) {
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            [array[i], array[j]] = [array[j], array[i]];
         }
     }
 
@@ -131,6 +131,17 @@ function startQuiz(id) {
                 <button onclick="checkAnswer()">Submit Answer</button>
             </div>
         `;
+
+
+        const textInput = document.getElementById("userAnswer");
+        textInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkAnswer();
+            }
+        });
+
+
+        textInput.focus();
     }
 
     window.checkAnswer = function() {
@@ -183,5 +194,5 @@ function startQuiz(id) {
     displayQuestion();
 }
 
-// Initialize the display
+
 showQuizzes();
