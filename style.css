@@ -147,11 +147,6 @@ button:hover {
     transition: all 0.3s ease;
 }
 
-.quiz-item:hover {
-    border-color: var(--secondary-hover);
-    transform: translateY(-3px);
-}
-
 .delete-btn {
     background-color: rgba(194, 184, 163, 0.1);
     position: absolute;
@@ -221,12 +216,6 @@ button:hover {
     border: 2px solid transparent;
     border-radius: 8px;
     transition: all 0.3s ease;
-}
-
-.option-button:hover {
-    background-color: var(--secondary-hover);
-    color: var(--primary-bg);
-    transform: translateX(5px);
 }
 
 /* Responsive design adjustments */
