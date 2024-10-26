@@ -105,14 +105,26 @@ function startQuiz(id) {
     let score = 0;
     let userAnswers = [];
 
+    // Fisher-Yates shuffle function
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+        }
+    }
+
+
+    const shuffledQuestions = [...quiz.questions];
+    shuffle(shuffledQuestions);
+
     const quizContainer = document.getElementById('quizList');
     
     function displayQuestion() {
-        const question = quiz.questions[currentQuestion];
+        const question = shuffledQuestions[currentQuestion];
         quizContainer.innerHTML = `
             <h2>${quiz.title}</h2>
             <div class="quiz-item">
-                <h3>Question ${currentQuestion + 1} of ${quiz.questions.length}</h3>
+                <h3>Question ${currentQuestion + 1} of ${shuffledQuestions.length}</h3>
                 <p>${question.question}</p>
                 <label>Type your answer:</label>
                 <input type="text" id="userAnswer" required placeholder="Enter your answer">
@@ -125,13 +137,13 @@ function startQuiz(id) {
         const userAnswer = document.getElementById('userAnswer').value.trim();
         userAnswers.push(userAnswer); // Store the user's answer
 
-        if (userAnswer.toLowerCase() === quiz.questions[currentQuestion].correctAnswer.toLowerCase()) {
+        if (userAnswer.toLowerCase() === shuffledQuestions[currentQuestion].correctAnswer.toLowerCase()) {
             score++;
         }
         
         currentQuestion++;
         
-        if (currentQuestion < quiz.questions.length) {
+        if (currentQuestion < shuffledQuestions.length) {
             displayQuestion();
         } else {
             showResults();
@@ -143,13 +155,13 @@ function startQuiz(id) {
             <div class="results">
                 <h2>Quiz Results</h2>
                 <h3>${quiz.title}</h3>
-                <p>Your score: ${score} out of ${quiz.questions.length}</p>
-                <p>Percentage: ${(score / quiz.questions.length * 100).toFixed(2)}%</p>
+                <p>Your score: ${score} out of ${shuffledQuestions.length}</p>
+                <p>Percentage: ${(score / shuffledQuestions.length * 100).toFixed(2)}%</p>
                 <h4>Details:</h4>
                 <ul>
         `;
 
-        quiz.questions.forEach((question, index) => {
+        shuffledQuestions.forEach((question, index) => {
             resultsHTML += `
                 <li>
                     <strong>Q${index + 1}: ${question.question}</strong><br>
