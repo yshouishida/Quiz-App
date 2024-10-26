@@ -1,0 +1,36 @@
+[
+    {
+        "id": 2,
+        "title": "Flowchart Symbol Quiz",
+        "questions": [
+            { "question": "Represents the start or end point of a process.", "correctAnswer": "Terminator" },
+            { "question": "Represents a set of instructions that can be reused (a sub-process or function).", "correctAnswer": "Subroutine" },
+            { "question": "Used to connect parts of the flowchart that are on the same page.", "correctAnswer": "Connector" },
+            { "question": "Indicates the organization or arrangement of data.", "correctAnswer": "Collate" },
+            { "question": "Represents data input directly into the system (commonly used for direct storage devices like a hard drive).", "correctAnswer": "Direct Data" },
+            { "question": "Denotes a generic process step where something is done.", "correctAnswer": "Process" },
+            { "question": "Indicates a decision point where the flow splits based on a yes/no or true/false condition.", "correctAnswer": "Decision" },
+            { "question": "Used for steps that prepare for subsequent actions (often for initialization).", "correctAnswer": "Preparation" },
+            { "question": "Connects to parts of the process that continue on a different page.", "correctAnswer": "Off-page Connector" },
+            { "question": "Represents a process where data is sorted.", "correctAnswer": "Sort" },
+            { "question": "Used to add explanatory notes or comments about a specific part of the process.", "correctAnswer": "Annotation" },
+            { "question": "Shows the convergence of multiple paths into a single process.", "correctAnswer": "Merge" },
+            { "question": "Used to show output to a user or external device.", "correctAnswer": "Display" },
+            { "question": "Indicates input or output of data (like entering data into a system or retrieving results).", "correctAnswer": "Data" },
+            { "question": "Represents input entered manually (like typing on a keyboard).", "correctAnswer": "Manual Input" },
+            { "question": "Shows a database or storage system.", "correctAnswer": "Database" },
+            { "question": "Indicates data stored within the system.", "correctAnswer": "Internal Storage" },
+            { "question": "Represents data stored on paper tape, commonly used in older computing.", "correctAnswer": "Paper Tape" },
+            { "question": "Indicates a delay in the process.", "correctAnswer": "Delay" },
+            { "question": "Represents a document produced or used in the process.", "correctAnswer": "Document" },
+            { "question": "Shows multiple documents involved in the process.", "correctAnswer": "Multiple Documents" },
+            { "question": "Represents a logical OR operation, where one or more conditions can be true.", "correctAnswer": "Logical OR" },
+            { "question": "Represents a logical AND operation, where all conditions must be true.", "correctAnswer": "Logical AND" },
+            { "question": "Denotes data that is stored for future use.", "correctAnswer": "Stored Data" },
+            { "question": "Indicates a manual repetitive process.", "correctAnswer": "Manual Loop" },
+            { "question": "Marks a point where a loop in the process is limited.", "correctAnswer": "Loop Limit" },
+            { "question": "Represents data stored on magnetic tape (common in older systems).", "correctAnswer": "Tape Data" },
+            { "question": "Indicates the direction of the process flow from one step to the next.", "correctAnswer": "Flow Line" }
+        ]
+    }
+]
