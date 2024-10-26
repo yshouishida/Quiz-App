@@ -23,7 +23,10 @@
             <div id="questions"></div>
             
             <button onclick="addQuestion()">Add Question</button>
-            <button onclick="saveQuiz()">Save Quiz</button>
+            <button onclick="saveQuiz()">Save Quiz</button><br>
+            <input type="file" id="fileInput" accept=".json" />
+            <button onclick="importQuizzes()">Import Quizzes</button>
+            
         </div>
 
         <div id="quizList" class="quiz-list"></div>
