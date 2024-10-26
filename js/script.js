@@ -1,6 +1,37 @@
 let quizzes = JSON.parse(localStorage.getItem('quizzes')) || [];
 let currentQuestions = [];
 
+// Function to import quizzes from a JSON file
+function importQuizzes() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    
+    if (!file) {
+        alert('Please select a JSON file to import.');
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        try {
+            const importedQuizzes = JSON.parse(event.target.result);
+            if (Array.isArray(importedQuizzes)) {
+                quizzes = [...quizzes, ...importedQuizzes];
+                localStorage.setItem('quizzes', JSON.stringify(quizzes));
+                alert('Quizzes imported successfully!');
+                showQuizzes(); // Refresh the quiz list
+            } else {
+                alert('Invalid JSON format. Please ensure it is an array of quizzes.');
+            }
+        } catch (error) {
+            alert('Error parsing JSON: ' + error.message);
+        }
+    };
+
+    reader.readAsText(file);
+}
+
 function showCreateQuiz() {
     document.getElementById('createQuiz').classList.add('active');
     document.getElementById('quizList').style.display = 'none';
@@ -109,11 +140,11 @@ function startQuiz(id) {
     function shuffle(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
         }
     }
 
-
+    // Shuffle the questions
     const shuffledQuestions = [...quiz.questions];
     shuffle(shuffledQuestions);
 
@@ -132,15 +163,15 @@ function startQuiz(id) {
             </div>
         `;
 
-
+        // Get the text input and add the event listener
         const textInput = document.getElementById("userAnswer");
         textInput.addEventListener("keyup", function(event) {
             if (event.key === "Enter") {
-                checkAnswer();
+                checkAnswer(); // Call the checkAnswer function on Enter
             }
         });
 
-
+        // Autofocus the input field
         textInput.focus();
     }
 
@@ -171,28 +202,32 @@ function startQuiz(id) {
                 <h4>Details:</h4>
                 <ul>
         `;
-
+    
         shuffledQuestions.forEach((question, index) => {
+            const userAnswer = userAnswers[index] || 'No Answer';
+            const isCorrect = userAnswer.toLowerCase() === question.correctAnswer.toLowerCase();
+            const color = isCorrect ? '#88C273' : '#F95454';
+    
             resultsHTML += `
-                <li>
+                <li style="color: ${color};">
                     <strong>Q${index + 1}: ${question.question}</strong><br>
-                    Correct Answer: ${question.correctAnswer}<br>
-                    Your Answer: ${userAnswers[index] || 'No Answer'}
+                    Correct Answer: <span style="color: #88C273;">${question.correctAnswer}</span><br>
+                    Your Answer: <span style="color: ${color};">${userAnswer}</span>    
                 </li>
             `;
         });
-
+    
         resultsHTML += `
                 </ul>
                 <button onclick="showQuizzes()">Back to Quizzes</button>
             </div>
         `;
-
+    
         quizContainer.innerHTML = resultsHTML;
     }
 
     displayQuestion();
 }
 
-
+// Initialize the display
 showQuizzes();
